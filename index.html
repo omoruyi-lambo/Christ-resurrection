@@ -162,8 +162,31 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, var(--primary-green) 0%, var(--green-light) 100%);
+            overflow: hidden;
         }
+
+        .hero-slide {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transform: scale(1.02);
+            animation: heroFade 18s infinite;
+        }
+
+        .hero-slide:nth-child(1) { animation-delay: 0s; }
+        .hero-slide:nth-child(2) { animation-delay: 6s; }
+        .hero-slide:nth-child(3) { animation-delay: 12s; }
+
+        @keyframes heroFade {
+            0% { opacity: 0; }
+            8% { opacity: 1; }
+            30% { opacity: 1; }
+            40% { opacity: 0; }
+            100% { opacity: 0; }
+        }
+
         .hero-overlay {
             position: absolute;
             top: 0;
@@ -891,7 +914,12 @@
 
     <!-- Hero Section -->
     <section class="hero" id="home">
-        <div class="hero-slider"></div>
+        <div class="hero-slider">
+            <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1520975916090-3105956dac38?auto=format&fit=crop&w=1600&q=80');"></div>
+            <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1511895426328-dc8719c56d10?auto=format&fit=crop&w=1600&q=80');"></div>
+            <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1503428593586-e225b39bddfe?auto=format&fit=crop&w=1600&q=80');"></div>
+        </div>
+
         <div class="hero-overlay"></div>
         <div class="hero-content" data-aos="fade-up">
             <h1 class="hero-title">Christ Resurrection Power Deliverance Ministry</h1>
