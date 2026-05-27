@@ -11,7 +11,39 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
     
-    <style>
+        <style>
+        /* Mobile menu open state */
+        .nav-menu.open {
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        @media (max-width: 768px) {
+            /* Mobile dropdown layout */
+            .nav-menu {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(26, 71, 42, 0.98);
+                padding: 20px;
+                box-shadow: var(--shadow-sm);
+                flex-direction: column;
+                gap: 18px;
+                align-items: flex-start;
+                z-index: 1100;
+            }
+
+            .nav-menu.open {
+                display: flex;
+            }
+
+            .nav-link {
+                font-size: 1rem;
+                padding: 6px 0;
+            }
+        }
+
         :root {
             --primary-green: #1a472a;
             --green-dark: #0f2318;
@@ -113,7 +145,7 @@
             font-size: 1.3rem;
             transition: color 0.3s ease;
         }
-        .navbar.scrolled .logo { color: var(--primary-green); }
+        .navbar.scrolled .logo { color: var(--white); }
         .logo i { font-size: 1.5rem; color: var(--accent-gold); }
 
         .nav-menu {
@@ -131,7 +163,7 @@
             position: relative;
             transition: color 0.3s ease;
         }
-        .navbar.scrolled .nav-link { color: var(--text-gray); }
+        .navbar.scrolled .nav-link { color: rgba(255, 255, 255, 0.9); }
         .nav-link::after {
             content: '';
             position: absolute;
@@ -144,9 +176,17 @@
         }
         .nav-link:hover::after { width: 100%; }
 
-        .nav-toggle { display: none; flex-direction: column; gap: 6px; cursor: pointer; }
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+            background: none;
+            border: 0;
+            padding: 0;
+        }
         .nav-toggle span { width: 25px; height: 2px; background: var(--white); transition: all 0.3s ease; }
-        .navbar.scrolled .nav-toggle span { background: var(--accent-gold); }
+        .navbar.scrolled .nav-toggle span { background: var(--white); }
 
 
         /* Hero Section */
@@ -498,6 +538,7 @@
             width: 60px;
             height: 60px;
             background: rgba(255, 255, 255, 0.95);
+            border: 0;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -545,7 +586,6 @@
             border-radius: 8px;
             aspect-ratio: 1;
             background: linear-gradient(135deg, var(--primary-green) 0%, var(--green-light) 100%);
-            cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -892,7 +932,6 @@
 
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
-        <div class="container" style="display: none; max-width: 100%;"></div>
         <div class="nav-wrapper">
             <a href="#home" class="logo">
                 <i class="fas fa-cross"></i>
@@ -907,20 +946,20 @@
                 <li><a href="#gallery" class="nav-link">Gallery</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
-            <div class="nav-toggle" id="navToggle">
+            <button type="button" class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navMenu">
                 <span></span>
                 <span></span>
                 <span></span>
-            </div>
+            </button>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-slider">
-            <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1520975916090-3105956dac38?auto=format&fit=crop&w=1600&q=80');"></div>
-            <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1511895426328-dc8719c56d10?auto=format&fit=crop&w=1600&q=80');"></div>
-            <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1503428593586-e225b39bddfe?auto=format&fit=crop&w=1600&q=80');"></div>
+            <div class="hero-slide" style="background-image:url('https://images.pexels.com/photos/34623696/pexels-photo-34623696.jpeg?auto=compress&cs=tinysrgb&w=1600');"></div>
+            <div class="hero-slide" style="background-image:url('https://images.pexels.com/photos/8349116/pexels-photo-8349116.jpeg?auto=compress&cs=tinysrgb&w=1600');"></div>
+            <div class="hero-slide" style="background-image:url('https://images.pexels.com/photos/17026873/pexels-photo-17026873.jpeg?auto=compress&cs=tinysrgb&w=1600');"></div>
         </div>
 
         <div class="hero-overlay"></div>
@@ -1001,8 +1040,7 @@
                 </div>
                 <div class="about-image" data-aos="fade-left">
                     <div class="image-wrapper">
-                        <img src="https://images.unsplash.com/photo-1533106418989-88406c7cc8ca?auto=format&fit=crop&w=1200&q=80" alt="Church Community" loading="lazy">
-
+                        <img src="https://images.pexels.com/photos/2537598/pexels-photo-2537598.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Stained-glass church interior with wooden pews">
                         <div class="image-overlay">
                             <i class="fas fa-heart"></i>
                         </div>
@@ -1065,14 +1103,14 @@
             <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Watch and be inspired by God's word</p>
             <div class="sermons-grid">
                 <div class="sermon-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="sermon-thumbnail" style="background-image:url('https://images.unsplash.com/photo-1520975916090-3105956dac38?auto=format&fit=crop&w=1200&q=80'); background-size: cover; background-position: center;">
+                    <div class="sermon-thumbnail" style="background-image:url('https://images.pexels.com/photos/8815020/pexels-photo-8815020.jpeg?auto=compress&cs=tinysrgb&w=1200'); background-size: cover; background-position: center;">
                         <div style="width:100%; height:100%; background: linear-gradient(135deg, rgba(26,71,42,0.85), rgba(45,90,61,0.85)); display:flex; align-items:center; justify-content:center;">
                             <i class="fas fa-cross" style="color: rgba(255,255,255,0.55);"></i>
                         </div>
 
-                        <div class="play-button" onclick="window.open('https://www.youtube.com/embed/dQw4w9WgXcQ')">
+                        <button type="button" class="play-button" aria-label="Search for ministry sermons on YouTube">
                             <i class="fas fa-play"></i>
-                        </div>
+                        </button>
                     </div>
                     <div class="sermon-content">
                         <h3>The Power of Resurrection</h3>
@@ -1081,14 +1119,14 @@
                     </div>
                 </div>
                 <div class="sermon-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="sermon-thumbnail" style="background-image:url('https://images.unsplash.com/photo-1524578271613-6d3d6c1b77bb?auto=format&fit=crop&w=1200&q=80'); background-size: cover; background-position: center;">
+                    <div class="sermon-thumbnail" style="background-image:url('https://images.pexels.com/photos/13965253/pexels-photo-13965253.jpeg?auto=compress&cs=tinysrgb&w=1200'); background-size: cover; background-position: center;">
                         <div style="width:100%; height:100%; background: linear-gradient(135deg, rgba(26,71,42,0.85), rgba(45,90,61,0.85)); display:flex; align-items:center; justify-content:center;">
                             <i class="fas fa-bible" style="color: rgba(255,255,255,0.55);"></i>
                         </div>
 
-                        <div class="play-button" onclick="window.open('https://www.youtube.com/embed/dQw4w9WgXcQ')">
+                        <button type="button" class="play-button" aria-label="Search for ministry sermons on YouTube">
                             <i class="fas fa-play"></i>
-                        </div>
+                        </button>
                     </div>
                     <div class="sermon-content">
                         <h3>Breaking Free from Bondage</h3>
@@ -1097,14 +1135,14 @@
                     </div>
                 </div>
                 <div class="sermon-card" data-aos="fade-up" data-aos-delay="400">
-                    <div class="sermon-thumbnail" style="background-image:url('https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=1200&q=80'); background-size: cover; background-position: center;">
+                    <div class="sermon-thumbnail" style="background-image:url('https://images.pexels.com/photos/33494797/pexels-photo-33494797.jpeg?auto=compress&cs=tinysrgb&w=1200'); background-size: cover; background-position: center;">
                         <div style="width:100%; height:100%; background: linear-gradient(135deg, rgba(26,71,42,0.85), rgba(45,90,61,0.85)); display:flex; align-items:center; justify-content:center;">
                             <i class="fas fa-fire" style="color: rgba(255,255,255,0.55);"></i>
                         </div>
 
-                        <div class="play-button" onclick="window.open('https://www.youtube.com/embed/dQw4w9WgXcQ')">
+                        <button type="button" class="play-button" aria-label="Search for ministry sermons on YouTube">
                             <i class="fas fa-play"></i>
-                        </div>
+                        </button>
                     </div>
                     <div class="sermon-content">
                         <h3>Living in God's Victory</h3>
@@ -1122,7 +1160,7 @@
             <h2 class="section-title" data-aos="fade-up">Photo Gallery</h2>
             <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Moments of worship and community</p>
             <div class="gallery-grid" data-aos="fade-up" data-aos-delay="200">
-                <div class="gallery-item" onclick="alert('Gallery item 1')" style="background-image:url('https://images.unsplash.com/photo-1523958177734-8f7c7d1b1bb0?auto=format&fit=crop&w=1200&q=80'); background-size:cover; background-position:center;">
+                <div class="gallery-item" role="img" aria-label="Ornate church interior with altar and wooden benches" style="background-image:url('https://images.pexels.com/photos/8349116/pexels-photo-8349116.jpeg?auto=compress&cs=tinysrgb&w=1200'); background-size:cover; background-position:center;">
                     <div style="position:absolute; inset:0; background: rgba(26,71,42,0.35);"></div>
                     <i class="fas fa-cross" style="position:relative; z-index:1;"></i>
 
@@ -1130,7 +1168,7 @@
                         <i class="fas fa-search-plus"></i>
                     </div>
                 </div>
-                <div class="gallery-item" onclick="alert('Gallery item 2')" style="background-image:url('https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1200&q=80'); background-size:cover; background-position:center;">
+                <div class="gallery-item" role="img" aria-label="Worshippers praying together during service" style="background-image:url('https://images.pexels.com/photos/14530786/pexels-photo-14530786.jpeg?auto=compress&cs=tinysrgb&w=1200'); background-size:cover; background-position:center;">
                     <div style="position:absolute; inset:0; background: rgba(26,71,42,0.35);"></div>
                     <i class="fas fa-hands-praying" style="position:relative; z-index:1;"></i>
 
@@ -1138,7 +1176,7 @@
                         <i class="fas fa-search-plus"></i>
                     </div>
                 </div>
-                <div class="gallery-item" onclick="alert('Gallery item 3')" style="background-image:url('https://images.unsplash.com/photo-1520697222860-7e7a1f2f7e9d?auto=format&fit=crop&w=1200&q=80'); background-size:cover; background-position:center;">
+                <div class="gallery-item" role="img" aria-label="Congregation worshipping together inside the sanctuary" style="background-image:url('https://images.pexels.com/photos/34623696/pexels-photo-34623696.jpeg?auto=compress&cs=tinysrgb&w=1200'); background-size:cover; background-position:center;">
                     <div style="position:absolute; inset:0; background: rgba(26,71,42,0.35);"></div>
                     <i class="fas fa-music" style="position:relative; z-index:1;"></i>
 
@@ -1146,7 +1184,7 @@
                         <i class="fas fa-search-plus"></i>
                     </div>
                 </div>
-                <div class="gallery-item" onclick="alert('Gallery item 4')" style="background-image:url('https://images.unsplash.com/photo-1543261745-6d0edeb7c5e2?auto=format&fit=crop&w=1200&q=80'); background-size:cover; background-position:center;">
+                <div class="gallery-item" role="img" aria-label="Historic church interior with chandeliers and vaulted ceiling" style="background-image:url('https://images.pexels.com/photos/11097202/pexels-photo-11097202.jpeg?auto=compress&cs=tinysrgb&w=1200'); background-size:cover; background-position:center;">
                     <div style="position:absolute; inset:0; background: rgba(26,71,42,0.35);"></div>
                     <i class="fas fa-bible" style="position:relative; z-index:1;"></i>
 
@@ -1154,7 +1192,7 @@
                         <i class="fas fa-search-plus"></i>
                     </div>
                 </div>
-                <div class="gallery-item" onclick="alert('Gallery item 5')" style="background-image:url('https://images.unsplash.com/photo-1519999482648-25049ddd37b1?auto=format&fit=crop&w=1200&q=80'); background-size:cover; background-position:center;">
+                <div class="gallery-item" role="img" aria-label="Large congregation praying together in worship" style="background-image:url('https://images.pexels.com/photos/17026873/pexels-photo-17026873.jpeg?auto=compress&cs=tinysrgb&w=1200'); background-size:cover; background-position:center;">
                     <div style="position:absolute; inset:0; background: rgba(26,71,42,0.35);"></div>
                     <i class="fas fa-fire" style="position:relative; z-index:1;"></i>
 
@@ -1162,7 +1200,7 @@
                         <i class="fas fa-search-plus"></i>
                     </div>
                 </div>
-                <div class="gallery-item" onclick="alert('Gallery item 6')" style="background-image:url('https://images.unsplash.com/photo-1520975958225-59c7c1a0ef6f?auto=format&fit=crop&w=1200&q=80'); background-size:cover; background-position:center;">
+                <div class="gallery-item" role="img" aria-label="Church sanctuary with stained glass and pews" style="background-image:url('https://images.pexels.com/photos/2537598/pexels-photo-2537598.jpeg?auto=compress&cs=tinysrgb&w=1200'); background-size:cover; background-position:center;">
                     <div style="position:absolute; inset:0; background: rgba(26,71,42,0.35);"></div>
                     <i class="fas fa-dove" style="position:relative; z-index:1;"></i>
 
@@ -1370,31 +1408,71 @@
             setTimeout(() => {
                 document.getElementById('pageLoader').classList.add('hidden');
             }, 1500);
-            AOS.init({
-                duration: 800,
-                easing: 'ease-out-cubic',
-                once: true,
-                offset: 60
-            });
+            if (window.AOS) {
+                AOS.init({
+                    duration: 800,
+                    easing: 'ease-out-cubic',
+                    once: true,
+                    offset: 60
+                });
+            }
         });
 
         // Navbar scroll effect
         const navbar = document.getElementById('navbar');
+        const scrollToTopButton = document.getElementById('scrollToTop');
         window.addEventListener('scroll', function() {
             if (window.scrollY > 100) {
                 navbar.classList.add('scrolled');
-                document.getElementById('scrollToTop').classList.add('visible');
+                scrollToTopButton.classList.add('visible');
             } else {
                 navbar.classList.remove('scrolled');
-                document.getElementById('scrollToTop').classList.remove('visible');
+                scrollToTopButton.classList.remove('visible');
             }
         });
+
+
+
 
         // Mobile menu toggle
         const navToggle = document.getElementById('navToggle');
         const navMenu = document.getElementById('navMenu');
+        const closeMobileMenu = () => {
+            navMenu.classList.remove('open');
+            navToggle.setAttribute('aria-expanded', 'false');
+        };
+
         navToggle.addEventListener('click', function() {
-            navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
+            const isOpen = navMenu.classList.toggle('open');
+            navToggle.setAttribute('aria-expanded', String(isOpen));
+        });
+
+        navMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', closeMobileMenu);
+        });
+
+        document.addEventListener('click', function(event) {
+            if (
+                window.innerWidth <= 768 &&
+                navMenu.classList.contains('open') &&
+                !navMenu.contains(event.target) &&
+                !navToggle.contains(event.target)
+            ) {
+                closeMobileMenu();
+            }
+        });
+
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768 && navMenu.classList.contains('open')) {
+                closeMobileMenu();
+            }
+        });
+
+        const sermonSearchUrl = 'https://www.youtube.com/results?search_query=Christ+Resurrection+Power+Deliverance+Ministry+sermons';
+        document.querySelectorAll('.play-button').forEach(button => {
+            button.addEventListener('click', function() {
+                window.open(sermonSearchUrl, '_blank', 'noopener');
+            });
         });
 
         // Testimonials carousel
