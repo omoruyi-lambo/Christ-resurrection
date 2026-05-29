@@ -441,6 +441,14 @@
         menuIcon.textContent = mobileMenu.classList.contains('open') ? 'close' : 'menu';
     });
 
+    // Close menu on mobile nav link click
+    mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenu.classList.remove('open');
+            menuIcon.textContent = 'menu';
+        });
+    });
+
     // Close menu on click outside
     document.addEventListener('click', (e) => {
         if (!menuToggle.contains(e.target) && !mobileMenu.contains(e.target) && mobileMenu.classList.contains('open')) {

@@ -397,6 +397,15 @@
             menu.classList.add('hidden-menu');
         };
 
+        // Close mobile menu on link click (so mobile nav links are actually usable)
+        if (menu) {
+            menu.querySelectorAll('a').forEach(link => {
+                link.onclick = () => {
+                    menu.classList.add('hidden-menu');
+                };
+            });
+        }
+
         // Scroll Effects for Back to Top and Nav
         window.addEventListener('scroll', () => {
             const btt = document.getElementById('backToTop');

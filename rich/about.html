@@ -367,6 +367,15 @@
         menu.classList.add('hidden-menu');
     };
 
+    // Close mobile menu on link click (so mobile nav links navigate correctly)
+    if (menu) {
+        menu.querySelectorAll('a').forEach(link => {
+            link.onclick = () => {
+                menu.classList.add('hidden-menu');
+            };
+        });
+    }
+
     // Scroll Effects
     window.addEventListener('scroll', () => {
         const btt = document.getElementById('backToTop');

@@ -508,6 +508,16 @@
         menu.classList.add('hidden');
         menu.classList.remove('flex');
     };
+
+    // Close mobile menu on link click (so mobile nav links are actually usable)
+    if (menu) {
+        menu.querySelectorAll('a').forEach(link => {
+            link.onclick = () => {
+                menu.classList.add('hidden');
+                menu.classList.remove('flex');
+            };
+        });
+    }
     
     // Header transition on scroll
     window.addEventListener('scroll', () => {

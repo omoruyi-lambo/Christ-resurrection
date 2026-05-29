@@ -129,21 +129,21 @@
 <!-- Mobile Navigation Overlay -->
 <div class="absolute top-full left-0 w-full bg-white border-b border-outline px-6 py-8 xl:hidden shadow-2xl" id="mobile-menu">
 <div class="flex flex-col gap-4">
-<a class="text-lg font-medium" href="#">Home</a>
-<a class="text-lg font-medium" href="#">About Us</a>
-<a class="text-lg font-medium" href="#">Services</a>
-<a class="text-lg font-medium" href="#">Product Suite</a>
-<a class="text-lg font-medium" href="#">Blog</a>
-<a class="text-lg font-bold text-primary" href="#">Business Opportunity</a>
-<a class="text-lg font-medium" href="#">Contact Us</a>
+<a class="text-lg font-medium" href="index.html">Home</a>
+<a class="text-lg font-medium" href="about.html">About Us</a>
+<a class="text-lg font-medium" href="services.html">Services</a>
+<a class="text-lg font-medium" href="product-suite.html">Product Suite</a>
+<a class="text-lg font-medium" href="blog.html">Blog</a>
+<a class="text-lg font-bold text-primary" href="business-opportunity.html">Business Opportunity</a>
+<a class="text-lg font-medium" href="contact.html">Contact Us</a>
 <hr class="border-outline my-2"/>
 <div class="flex items-center justify-between">
-<a class="font-semibold text-primary" href="#">Login</a>
+<a class="font-semibold text-primary" href="login.html">Login</a>
 <div class="flex items-center gap-1 font-bold">
 <span class="material-symbols-outlined text-lg">language</span> EN
                 </div>
 </div>
-<a class="w-full bg-primary text-white text-center font-bold py-4 rounded-xl" href="#">Get Started</a>
+<a class="w-full bg-primary text-white text-center font-bold py-4 rounded-xl" href="signup.html">Get Started</a>
 </div>
 </div>
 </nav>
@@ -400,6 +400,17 @@
         mobileMenu.classList.toggle('open');
         menuIcon.textContent = mobileMenu.classList.contains('open') ? 'close' : 'menu';
         document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+    });
+
+    // Close mobile menu when a mobile nav link is clicked
+    mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            if (mobileMenu.classList.contains('open')) {
+                mobileMenu.classList.remove('open');
+                menuIcon.textContent = 'menu';
+                document.body.style.overflow = '';
+            }
+        });
     });
 
     // Glass Navbar Scroll Effect

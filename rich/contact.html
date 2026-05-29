@@ -139,6 +139,13 @@ const menu = document.getElementById('mobile-menu');
 if(menuBtn && closeBtn && menu) {
 menuBtn.onclick = () => menu.classList.remove('hidden');
 closeBtn.onclick = () => menu.classList.add('hidden');
+
+    // Close mobile menu on link click
+    menu.querySelectorAll('a').forEach(link => {
+        link.onclick = () => {
+            menu.classList.add('hidden');
+        };
+    });
 }
 </script>
 </header>
